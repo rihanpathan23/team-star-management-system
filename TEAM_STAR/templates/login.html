@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+    <div class="glass-panel" style="padding: 40px; width: 100%; max-width: 400px; text-align: center; border-radius: 15px; border-top: 4px solid #00f3ff; box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);">
+        
+        <div style="font-size: 40px; margin-bottom: 10px; filter: drop-shadow(0 0 10px #00f3ff);">🛡️</div>
+        <h2 class="neon-text" style="font-family: 'Orbitron', sans-serif; font-size: 30px; margin-bottom: 5px;">COMMAND CENTER</h2>
+        <p style="color: #a0a0a0; margin-bottom: 30px; letter-spacing: 2px; font-size: 14px;">AUTHORIZED SQUAD ONLY</p>
+
+        <!-- Agar password galat dala, toh ye error message dikhega -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div style="background: rgba(255, 0, 60, 0.2); border: 1px solid #ff003c; color: #ff003c; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+                {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="/login" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+            <input type="text" name="username" placeholder="Admin ID" required class="input-dark" style="width: 100%; padding: 15px; font-size: 16px; text-align: center; letter-spacing: 1px;">
+            <input type="password" name="password" placeholder="Passcode" required class="input-dark" style="width: 100%; padding: 15px; font-size: 16px; text-align: center; letter-spacing: 2px;">
+            
+            <button type="submit" class="btn-neon-blue" style="width: 100%; padding: 15px; margin-top: 10px; font-size: 18px; letter-spacing: 1px;">INITIALIZE ACCESS</button>
+        </form>
+        
+    </div>
+</div>
+{% endblock %}

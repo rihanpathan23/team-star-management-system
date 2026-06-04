@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 20px;">
+    <h2 class="neon-text" style="font-size: 35px; font-family: 'Orbitron', sans-serif; text-transform: uppercase;">Match History</h2>
+    <a href="/funds" style="color: #a0a0a0; text-decoration: none; font-size: 14px;">⬅ Back to Team Funds</a>
+</div>
+
+<div style="overflow-x: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+    <table class="glass-panel" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr style="background: rgba(0, 243, 255, 0.15); color: #00f3ff; font-family: 'Orbitron', sans-serif;">
+                <th style="padding: 15px;">Date</th>
+                <th style="padding: 15px;">Time Slot</th>
+                <th style="padding: 15px;">Entry Fee</th>
+                <th style="padding: 15px;">Position</th>
+                <th style="padding: 15px;">Profit / Loss</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scrim in scrims %}
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 15px;">{{ scrim.date }}</td>
+                <td style="padding: 15px;">{{ scrim.time }}</td>
+                <td style="padding: 15px;">₹{{ scrim.entry_fee }}</td>
+                <td style="padding: 15px; font-weight: bold;">#{{ scrim.rank }}</td>
+                
+                {% if scrim.profit > 0 %}
+                    <td style="padding: 15px; font-weight: bold; font-size: 18px; color: #00ff00;">₹{{ scrim.profit }}</td>
+                {% else %}
+                    <td style="padding: 15px; font-weight: bold; font-size: 18px; color: #ff003c;">₹{{ scrim.profit }}</td>
+                {% endif %}
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" style="padding: 30px; text-align: center; color: #a0a0a0; font-style: italic;">
+                    No match history available yet.
+                </td>
+            </tr>
+            {% endfor %}
+            {% if session.get('is_admin') %}
+<td style="padding: 15px;">
+    <a href="/delete_scrim/{{ scrim.id }}" style="color: #ff003c; text-decoration: none;">Delete</a>
+</td>
+{% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

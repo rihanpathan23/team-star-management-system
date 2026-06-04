@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="neon-text" style="text-align: center;">🏆 SQUAD ACHIEVEMENTS</h1>
+
+{% if session.get('is_admin') %}
+<div class="glass-panel" style="padding: 20px; margin-bottom: 30px;">
+    <form action="/upload_achievement" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Achievement Name" class="input-dark" required>
+        <input type="file" name="ach_image" class="input-dark" required>
+        <button type="submit" class="btn-neon-red">Add Trophy</button>
+    </form>
+</div>
+{% endif %}
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+    {% for ach in achievements %}
+    <div class="glass-panel" style="padding: 10px; text-align: center;">
+        <img src="{{ url_for('static', filename='uploads/achievements/' + ach.filename) }}" style="width: 100%; border-radius: 10px;">
+        <h3 style="color: #00f3ff;">{{ ach.title }}</h3>
+        {% if session.get('is_admin') %}
+        <a href="/delete_achievement/{{ ach.id }}" style="color: #ff003c;">Delete</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

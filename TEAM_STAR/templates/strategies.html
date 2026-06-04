@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-bottom: 40px;">
+    <h1 class="neon-text" style="font-size: 50px; font-family: 'Orbitron', sans-serif;">SQUAD STRATEGIES</h1>
+    <p style="color: #00f3ff; font-size: 18px; letter-spacing: 1px;">Select a category to view intel, swipe images, and discuss.</p>
+</div>
+
+{% if session.get('is_admin') %}
+<div style="text-align: center; margin-bottom: 40px;">
+    <a href="/upload_strategy" class="btn-neon-red" style="font-size: 14px; text-decoration: none; padding: 12px 25px;">+ Upload New Intel Images</a>
+</div>
+{% endif %}
+
+<div class="strategy-container" style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+    
+    <a href="/strategy_view/meta" class="glass-panel strategy-card" style="width: 300px; padding: 40px 20px; text-decoration: none; text-align: center;">
+        <div class="card-icon" style="font-size: 60px; margin-bottom: 15px;">⚡</div>
+        <h3 style="font-size: 24px; color: #00f3ff; margin-bottom: 10px;">CHARACTER META</h3>
+        <p style="color: #a0a0a0; font-size: 14px;">Current season character skill combinations.</p>
+    </a>
+
+    <a href="/strategy_view/drop" class="glass-panel strategy-card" style="width: 300px; padding: 40px 20px; text-decoration: none; text-align: center;">
+        <div class="card-icon" style="font-size: 60px; margin-bottom: 15px;">🪂</div>
+        <h3 style="font-size: 24px; color: #00f3ff; margin-bottom: 10px;">DROP POINT</h3>
+        <p style="color: #a0a0a0; font-size: 14px;">Primary landing spots with loot paths.</p>
+    </a>
+
+    <a href="/strategy_view/rotation" class="glass-panel strategy-card" style="width: 300px; padding: 40px 20px; text-decoration: none; text-align: center;">
+        <div class="card-icon" style="font-size: 60px; margin-bottom: 15px;">🗺️</div>
+        <h3 style="font-size: 24px; color: #00f3ff; margin-bottom: 10px;">ROTATION MAP</h3>
+        <p style="color: #a0a0a0; font-size: 14px;">Zone-to-zone safe paths & choke points.</p>
+    </a>
+
+</div>
+{% endblock %}

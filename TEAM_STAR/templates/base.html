@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Star | Esports Hub</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="background-color: #0a0a0f; color: #fff; font-family: 'Rajdhani', sans-serif; margin: 0; padding: 0;">
+    
+    <nav class="navbar glass-panel" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; border-bottom: 1px solid rgba(0, 243, 255, 0.2);">
+        <div class="nav-left">
+            <a href="/" style="text-decoration: none;">
+                <h1 class="team-logo" style="display: flex; align-items: baseline; gap: 8px; margin: 0; color: #fff;">
+                    <span style="font-size: 38px; font-family: 'Orbitron', sans-serif;">TEAM</span> 
+                    <span class="neon-text" style="font-size: 20px; font-family: 'Orbitron', sans-serif;">STAR</span>
+                </h1>
+            </a>
+        </div>
+        
+        <div class="nav-center" style="display: flex; gap: 20px;">
+            <a href="/funds" class="nav-link {% if active_page == 'funds' %}active{% endif %}" style="color: #fff; text-decoration: none; font-size: 18px; font-family: 'Orbitron', sans-serif;">Team Funds</a>
+            <a href="/strategies" class="nav-link {% if active_page == 'strategies' %}active{% endif %}" style="color: #fff; text-decoration: none; font-size: 18px; font-family: 'Orbitron', sans-serif;">Squad Strategies</a>
+            <a href="/achievements" class="nav-link {% if active_page == 'achievements' %}active{% endif %}" style="color: #fff; text-decoration: none; font-size: 18px; font-family: 'Orbitron', sans-serif;">Achievements 🏆</a>
+        </div>
+
+        <div class="nav-right">
+            {% if session.get('is_admin') %}
+                <span class="admin-badge" style="color: #ff003c; border: 1px solid #ff003c; padding: 5px 10px; border-radius: 5px; margin-right: 15px; font-size: 14px;">Admin Mode</span>
+                <a href="/logout" class="btn-neon-red" style="text-decoration: none; padding: 8px 15px;">Logout</a>
+            {% else %}
+                <a href="/login" class="btn-neon-blue" style="text-decoration: none; padding: 8px 15px;">Admin Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 40px;">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
