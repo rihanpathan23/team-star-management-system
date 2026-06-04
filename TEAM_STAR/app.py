@@ -10,7 +10,10 @@ app.secret_key = "team_star_pro_mode"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///team_star_pro.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
+# --- DATABASE SETUP ---
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///team_star_pro.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 # --- UPLOAD FOLDER ---
 UPLOAD_FOLDER = os.path.join('static', 'uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
