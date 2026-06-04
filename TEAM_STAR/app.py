@@ -5,13 +5,11 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = "team_star_pro_mode"
+# --- DATABASE SETUP ---
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-# --- DATABASE SETUP ---
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///team_star_pro.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-# --- DATABASE SETUP ---
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///team_star_pro.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance', 'team_star_pro.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 # --- UPLOAD FOLDER ---
