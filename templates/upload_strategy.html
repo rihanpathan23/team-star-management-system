@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+    <div class="glass-panel" style="padding: 40px; width: 100%; max-width: 500px; text-align: center; border-radius: 15px; border-top: 4px solid #00f3ff;">
+        
+        <h2 class="neon-text" style="font-family: 'Orbitron', sans-serif;">UPLOAD INTEL</h2>
+        <p style="color: #a0a0a0; margin-bottom: 30px;">Select category and upload multiple images.</p>
+
+        <form action="/upload_strategy" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 20px;">
+            
+            <select name="category" required class="input-dark">
+                <option value="meta">⚡ Character Meta</option>
+                <option value="drop">🪂 Drop Point</option>
+                <option value="rotation">🗺️ Rotation Map</option>
+            </select>
+
+            <input type="file" name="strategy_images" accept="image/*" multiple required class="input-dark">
+            
+            <button type="submit" class="btn-neon-blue" style="width: 100%; padding: 15px; font-size: 18px;">UPLOAD TO HQ</button>
+        </form>
+        
+        <div style="margin-top: 20px;">
+            <a href="/strategies" style="color: #a0a0a0; text-decoration: none; font-size: 14px;">⬅ Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

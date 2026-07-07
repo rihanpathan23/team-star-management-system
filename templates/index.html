@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Welcome Header -->
+<div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+    <h2 style="color: #fff; font-family: 'Orbitron', sans-serif;">WELCOME TO</h2>
+    <h1 class="neon-text" style="font-size: 80px; font-family: 'Orbitron', sans-serif; margin: 10px 0;">TEAM STAR</h1>
+</div>
+
+<!-- 2 Main Options -->
+<div class="strategy-container">
+    
+    <!-- Option 1: Team Funds -->
+    <a href="/funds" class="glass-panel strategy-card" style="width: 400px; padding: 60px 20px;">
+        <div class="card-icon" style="font-size: 80px;">💰</div>
+        <h3 style="font-size: 30px; color: #00f3ff;">TEAM FUNDS</h3>
+        <p>Access Squad Balance, Admin Panel, and Match History.</p>
+    </a>
+
+    <!-- Option 2: Squad Strategies -->
+    <a href="/strategies" class="glass-panel strategy-card" style="width: 400px; padding: 60px 20px;">
+        <div class="card-icon" style="font-size: 80px;">🗺️</div>
+        <h3 style="font-size: 30px; color: #00f3ff;">SQUAD STRATEGIES</h3>
+        <p>Classified intel, Meta updates, Drop Points & Squad Comm-Link.</p>
+    </a>
+
+</div>
+{% endblock %}
